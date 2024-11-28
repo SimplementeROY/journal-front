@@ -116,7 +116,6 @@ export class PageEdicionComponent {
       this.usuarioId = data;
       this.rolUsuario = this.usuarioId.rol;
       this.publicable = this.rolUsuario === 'editor'
-      console.log(this.publicable);
 
     });
 
