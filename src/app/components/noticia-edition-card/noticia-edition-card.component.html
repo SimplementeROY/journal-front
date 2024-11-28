@@ -1,19 +1,10 @@
-<div class="div-noticia">
-
-    <div class="content-left family">
-        <h3>{{miNoticia?.titular}}</h3>
+<article>
+    <figure>
         <img [src]="miNoticia?.imagen" [alt]="miNoticia?.titular">
-    </div>
-
-    <div class="caja-derecha">
-
-        <div class="noticiaTexto family">
-            <!-- Se utiliza [innerHTML] para permitir que las etiquetas <p> y otros elementos HTML que vienen en el texto de
-                    la base de datos se rendericen correctamente en la vista. -->
-            <p>{{miNoticia?.texto | recortarTexto}}</p>
-        </div>
-
-        <div class="content-right familyEstado">
+    </figure>
+    <div class="contenido">
+        <span>
+            <h3>{{miNoticia?.titular}}</h3>
             @if (miNoticia?.estado === 'borrador') {
             <h3 class="text-borrador">•{{miNoticia?.estado | uppercase}}</h3>
             }
@@ -23,9 +14,10 @@
             @if (miNoticia?.estado === 'revision') {
             <h3 class="text-revision">•{{miNoticia?.estado | uppercase}}</h3>
             }
-        </div>
+        </span>
 
-        <div>
+        <div class="crud">
+            <p style="flex: 1" [innerHTML]="miNoticia?.texto | recortarTexto : 400 | traducirHtml"></p>
             <button class="miBtn" [class.disabled]="rolUsuario === 'redactor' && miNoticia?.estado === 'publicado'"
                 (click)="intentarEditar()"
                 [routerLink]="rolUsuario === 'redactor' && miNoticia?.estado === 'publicado' ? null : ['/dashboard', 'editar-noticia', miNoticia?.id]"
@@ -35,4 +27,4 @@
         </div>
 
     </div>
-</div>
+</article>

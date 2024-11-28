@@ -4,39 +4,43 @@
 /* Para lo demas */
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 
-.family {
-    font-family: 'Newsreader', serif;
-}
-
-.familyEstado {
-    font-family: 'Bebas Neue', sans-serif;
-}
-
-.div-noticia {
-    border: 2px solid #ccc;
-    background-color: #f9f9f9;
-    margin: 15px;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+article {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 1rem;
 }
 
-.noticiaTexto {
-    flex: 1;
-    margin-right: 80px;
-    background-color: #eeeeee;
-    padding: 15px;
+.contenido {
+
+    padding: 1rem;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    width: 20rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.crud {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+span {
+    display: flex;
+    justify-content: space-between;
+}
+
+figure {
+    flex: auto;
+    margin: 0;
+    max-height: 300px;
 }
 
 img {
-    max-width: 35%;
-    height: auto;
-    border-radius: 8px;
+    width: 100%;
+    border-radius: .625rem;
+    object-fit: cover;
+    height: 100%;
 }
 
 .text-borrador,
@@ -63,22 +67,6 @@ img {
     color: #23d74d;
 }
 
-.content-right {
-    display: flex;
-    flex-direction: column;
-    margin-right: 40px;
-}
-
-.content-left {
-    display: flex;
-    flex-direction: column;
-}
-
-.caja-derecha {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 /*--------*/
 /* CSS de botones */
@@ -142,37 +130,16 @@ img {
 
 @media (width <=46.875rem) {
 
-    .div-noticia {
-        flex-direction: column;
-    }
 
     article {
+        display: flex;
         flex-direction: column;
     }
 
-    img {
-        max-width: 100%;
-        margin-bottom: 15px;
+    figure {
+        max-height: none;
     }
 
-    .caja-derecha {
-        flex-direction: column;
-    }
-
-    .content-right,
-    .content-left {
-        margin-right: 0;
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    .noticiaTexto {
-        margin-right: 0;
-        width: auto;
-        font-size: 0.8rem;
-    }
 }
 
 @media (46.9375rem <=width <=62.5rem) {

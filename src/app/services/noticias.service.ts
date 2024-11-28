@@ -3,13 +3,19 @@ import { inject, Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { INoticia } from '../interfaces/inoticia.interface';
 
+type Respuesta = {
+  resultado: INoticia[];
+  prev: string | null;
+  next: string | null;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class NoticiasService {
 
-  private endpoint = 'https://upgrade-news.onrender.com/api/noticias/';
-  // private endpoint = 'http://localhost:3000/api/noticias/';
+  // private endpoint = 'https://upgrade-news.onrender.com/api/noticias/';
+  private endpoint = 'http://localhost:3000/api/noticias/';
 
   private httpClient = inject(HttpClient)
 
@@ -24,8 +30,8 @@ export class NoticiasService {
     return firstValueFrom(this.httpClient.get<INoticia>(`${this.endpoint}/${id}`))
   }
 
-  getByUser(): Promise<INoticia[]> {
-    return firstValueFrom(this.httpClient.get<INoticia[]>(`${this.endpoint}/usuario/`))
+  getByUser(): Promise<Respuesta> {
+    return firstValueFrom(this.httpClient.get<Respuesta>(`${this.endpoint}/usuario/`))
   }
 
   getBySlug(slug: string): Promise<INoticia> {
@@ -46,7 +52,15 @@ export class NoticiasService {
     return firstValueFrom(this.httpClient.put<INoticia>(`${this.endpoint}/${id}`, noticia))
   }
 
-  getByName(texto: string, limit: number): Promise<INoticia[]> {
-    return firstValueFrom(this.httpClient.get<INoticia[]>(`${this.endpoint}/busqueda/${texto}?num=${limit}`))
+  getByName(texto: string, limit: number, url: string = ''): Promise<Respuesta> {
+    if (url) {
+      return firstValueFrom(this.httpClient.get<Respuesta>(`${url}?num=${limit}`))
+    }
+    return firstValueFrom(this.httpClient.get<Respuesta>(`${this.endpoint}/busqueda/${texto}?num=${limit}`))
+  }
+
+  getByUrl(url: string): Promise<Respuesta> {
+
+    return firstValueFrom(this.httpClient.get<Respuesta>(`${url}`))
   }
 }

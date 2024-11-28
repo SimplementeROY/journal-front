@@ -10,11 +10,12 @@ import { IUsuario } from '../../../interfaces/iusuario.interface';
 import { INoticia } from '../../../interfaces/inoticia.interface';
 import { Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { EditorComponent } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-page-edicion',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, EditorComponent],
   templateUrl: './page-edicion.component.html',
   styleUrls: ['./page-edicion.component.css']
 })
@@ -31,6 +32,12 @@ export class PageEdicionComponent {
   arrCategorias: ICategoria[] = [];
   arrEditores: IUsuario[] = [];
 
+  init: EditorComponent['init'] = {
+    base_url: '/tinymce',
+    suffix: '.min',
+
+  }
+
   noticia!: INoticia;
   noticiaId!: any;
   //  Defino noticiaId aqui para poder usarlo en la función obtenerNoticia y en la función de editar la noticia
@@ -39,6 +46,7 @@ export class PageEdicionComponent {
   rolUsuario!: string;
   usuarioId!: IUsuario;
   showToast: boolean = false;
+  publicable: boolean = false;
 
   // Inyectar el servicio de toastr para mostrar mensajes de éxito o error
   constructor(private toastr: ToastrService) {
@@ -107,12 +115,11 @@ export class PageEdicionComponent {
     this.usuariosService.getUsuarioPorId().then((data: IUsuario) => {
       this.usuarioId = data;
       this.rolUsuario = this.usuarioId.rol;
-      console.log(this.rolUsuario);
+      this.publicable = this.rolUsuario === 'editor'
+      console.log(this.publicable);
+
     });
 
-    if (this.rolUsuario === 'redactor') {
-      this.editarNoticiaForm.get('estado')?.disable();
-    }
   }
 
   obtenerNoticia() {

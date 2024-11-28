@@ -9,11 +9,12 @@ import { UsuariosService } from '../../../services/usuarios.service';
 import { IUsuario } from '../../../interfaces/iusuario.interface';
 import { Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { EditorComponent } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-page-creacion',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, EditorComponent],
   templateUrl: './page-creacion.component.html',
   styleUrl: './page-creacion.component.css'
 })
@@ -33,6 +34,11 @@ export class PageCreacionComponent {
   rolUsuario!: string
   arrEditores: IUsuario[] = []
 
+  init: EditorComponent['init'] = {
+    base_url: '/tinymce',
+    suffix: '.min',
+
+  }
   constructor(private toastr: ToastrService) {
     this.crearNoticiaForm = new FormGroup({
       titular: new FormControl('', [
