@@ -14,8 +14,8 @@ type Respuesta = {
 })
 export class NoticiasService {
 
-  // private endpoint = 'https://upgrade-news.onrender.com/api/noticias/';
-  private endpoint = 'http://localhost:3000/api/noticias/';
+  private endpoint = 'https://journal-back.onrender.com/api/noticias/';
+  // private endpoint = 'http://localhost:3000/api/noticias/';
 
   private httpClient = inject(HttpClient)
 
