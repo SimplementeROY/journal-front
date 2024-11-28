@@ -4,6 +4,45 @@
 /* Para lo demas */
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 
+article {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+}
+
+.contenido {
+
+    padding: 1rem;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.crud {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+span {
+    display: flex;
+    justify-content: space-between;
+}
+
+figure {
+    flex: auto;
+    margin: 0;
+    max-height: 300px;
+}
+
+img {
+    width: 100%;
+    border-radius: .625rem;
+    object-fit: cover;
+    height: 100%;
+}
+
 .family {
     font-family: 'Newsreader', serif;
 }
@@ -33,11 +72,7 @@
     width: 20rem;
 }
 
-img {
-    max-width: 35%;
-    height: auto;
-    border-radius: 8px;
-}
+
 
 .text-borrador,
 .text-revision,

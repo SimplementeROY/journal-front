@@ -32,7 +32,7 @@
     font-size: 16px;
     font-weight: 600;
     line-height: normal;
-    margin: 0;
+    margin-bottom: 1rem;
     min-width: 0;
     outline: none;
     padding: 16px 24px;
@@ -68,4 +68,11 @@
 
 .colortext {
     color: white;
+}
+
+section {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    margin-bottom: 3rem;
 }

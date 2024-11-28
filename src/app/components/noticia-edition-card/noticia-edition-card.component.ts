@@ -5,12 +5,13 @@ import { UpperCasePipe } from '@angular/common';
 import { RecortarTextoPipe } from '../../pipes/recortar-texto.pipe';
 import { ToastrService } from 'ngx-toastr';
 import { UsuariosService } from '../../services/usuarios.service';
+import { TraducirHtmlPipe } from '../../pipes/traducir-html.pipe';
 
 
 @Component({
   selector: 'app-noticia-edition-card',
   standalone: true,
-  imports: [RouterLink, UpperCasePipe, RecortarTextoPipe],
+  imports: [RouterLink, UpperCasePipe, RecortarTextoPipe, TraducirHtmlPipe],
   templateUrl: './noticia-edition-card.component.html',
   styleUrl: './noticia-edition-card.component.css'
 })

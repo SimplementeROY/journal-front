@@ -38,10 +38,11 @@
 
             <div class="mb-3">
                 <label for="texto" class="form-label">Texto del artículo:</label>
-                <textarea id="texto" class="form-control" rows="5" formControlName="texto"></textarea>
+                <editor [init]="init" formControlName="texto"></editor>
+                <!-- <textarea id="texto" class="form-control" rows="5" formControlName="texto"></textarea>
                 @if(editarNoticiaForm.get('texto')?.invalid && editarNoticiaForm.get('texto')?.touched){
                 <p class="text-danger">CAMPO OBLIGATORIO</p>
-                }
+                } -->
             </div>
 
             <!-- Categoria -->
@@ -116,7 +117,6 @@
             <!-- Estado -->
             <div class="mb-3 text-center">
                 <label class="form-label">Estado:</label><br>
-                @if(rolUsuario !== 'redactor') {
                 <div class="btn-group" role="group" aria-label="Estado">
                     <input class="btn-check" type="radio" id="borrador" formControlName="estado" value="borrador">
                     <label class="btn btn-outline-danger" for="borrador">Borrador</label>
@@ -124,28 +124,20 @@
                     <input class="btn-check" type="radio" id="revision" formControlName="estado" value="revision">
                     <label class="btn btn-outline-primary" for="revision">Revision</label>
 
+                    @if (publicable) {
                     <input class="btn-check" type="radio" id="publicado" formControlName="estado" value="publicado">
                     <label class="btn btn-outline-success" for="publicado">Publicado</label>
-                </div>
-
-                } @else {
-
-                <div class="btn-group" role="group" aria-label="Estado">
-                    <input class="btn-check" type="radio" id="borrador" formControlName="estado" value="borrador"
-                        [attr.disabled]="true">
-                    <label class="btn btn-outline-danger" for="borrador">Borrador</label>
-
-                    <input class="btn-check" type="radio" id="revision" formControlName="estado" value="revision"
-                        [attr.disabled]="true">
-                    <label class="btn btn-outline-primary" for="revision">Revision</label>
-
+                    }
+                    @else {
                     <input class="btn-check" type="radio" id="publicado" formControlName="estado" value="publicado"
                         [attr.disabled]="true">
-                    <label class="btn btn-outline-success" for="publicado">Publicado</label>
-                </div>
-                <p class="text-muted">Solo el editor puede cambiar el estado de la noticia.</p>
+                    <label class=" btn btn-outline-success" for="publicado">Publicado</label>
+                    }
 
-                }
+
+                </div>
+
+
                 @if(editarNoticiaForm.get('estado')?.invalid && editarNoticiaForm.get('estado')?.touched){
                 <p class="text-danger">CAMPO OBLIGATORIO</p>
                 }
@@ -154,7 +146,8 @@
             <!-- Jefe Editor -->
             <div class="mb-3">
                 <label>Editor</label>
-                <select id="editor" class="form-select" formControlName="editor_id">
+                <select id="editor" class="form-select" [attr.disabled]="rolUsuario === 'editor'"
+                    formControlName="editor_id">
                     <option value="">Seleccione un editor</option>
                     @for (editor of arrEditores; track editor.id) {
                     <option [value]="editor.id">{{editor.nombre}}</option>
@@ -193,8 +186,7 @@
         </form>
         <div class="button-container mt-3">
             <button style="margin-right: 10px;" class="miBtn btn-crear-noticia" type="submit" (click)="onSubmit()"
-                [disabled]="editarNoticiaForm.invalid">Editar
-                Noticia</button>
+                [disabled]="editarNoticiaForm.invalid">Guardar</button>
         </div>
         @if(editarNoticiaForm.invalid && editarNoticiaForm.touched){
         <p class="text-danger text-center">COMPLETA TODOS LOS CAMPOS</p>

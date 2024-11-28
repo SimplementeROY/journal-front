@@ -36,7 +36,7 @@
 
             <div class="mb-3">
                 <label for="texto" class="form-label">Texto del artículo:</label>
-                <textarea id="texto" class="form-control" rows="5" formControlName="texto"></textarea>
+                <editor [init]="init" formControlName="texto"></editor>
                 @if(crearNoticiaForm.get('texto')?.invalid && crearNoticiaForm.get('texto')?.touched){
                 <p class="text-danger">CAMPO OBLIGATORIO</p>
                 }
@@ -114,19 +114,21 @@
             <!-- Estado -->
             <div class="mb-3 text-center">
                 <label class="form-label">Estado:</label><br>
-                @if(rolUsuario !== 'redactor') {
+
                 <div class="btn-group" role="group" aria-label="Estado">
                     <input class="btn-check" type="radio" id="borrador" formControlName="estado" value="borrador">
                     <label class="btn btn-outline-danger" for="borrador">Borrador</label>
 
                     <input class="btn-check" type="radio" id="revision" formControlName="estado" value="revision">
-                    <label class="btn btn-outline-primary" for="revision">Revision</label>
+                    <label class="btn btn-outline-primary" for="revision">Revisión</label>
 
-                    <input class="btn-check" type="radio" id="publicado" formControlName="estado" value="publicado">
+                    <input class="btn-check" type="radio" id="publicado" formControlName="estado" value="publicado"
+                        [attr.disabled]="rolUsuario !== 'redactor'">
                     <label class="btn btn-outline-success" for="publicado">Publicado</label>
                 </div>
 
-                } @else {
+
+                <!-- @else {
 
                 <div class="btn-group" role="group" aria-label="Estado">
                     <input class="btn-check" type="radio" id="borrador" formControlName="estado" value="borrador"
@@ -143,7 +145,7 @@
                 </div>
                 <p class="text-muted">Solo el editor puede cambiar el estado de la noticia.</p>
 
-                }
+                } -->
                 @if(crearNoticiaForm.get('estado')?.invalid && crearNoticiaForm.get('estado')?.touched){
                 <p class="text-danger">CAMPO OBLIGATORIO</p>
                 }
