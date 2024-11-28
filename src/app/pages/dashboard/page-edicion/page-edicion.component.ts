@@ -10,13 +10,12 @@ import { IUsuario } from '../../../interfaces/iusuario.interface';
 import { INoticia } from '../../../interfaces/inoticia.interface';
 import { Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { EditorNoticiaComponent } from "../../../components/editor-noticia/editor-noticia.component";
 import { EditorComponent } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-page-edicion',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, EditorNoticiaComponent, EditorComponent],
+  imports: [ReactiveFormsModule, RouterLink, EditorComponent],
   templateUrl: './page-edicion.component.html',
   styleUrls: ['./page-edicion.component.css']
 })
