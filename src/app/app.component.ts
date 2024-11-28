@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
-import { FormularioSuscripcionComponent } from "./components/formulario-suscripcion/formulario-suscripcion.component";
 import { SideBarComponent } from "./components/side-bar/side-bar.component";
 import { LoadingComponent } from "./components/loading/loading.component";
 import { CommonModule } from '@angular/common';
@@ -13,7 +12,6 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     RouterOutlet,
     NavBarComponent,
-    FormularioSuscripcionComponent,
     SideBarComponent,
     LoadingComponent
   ],

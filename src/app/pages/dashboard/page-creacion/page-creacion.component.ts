@@ -9,13 +9,12 @@ import { UsuariosService } from '../../../services/usuarios.service';
 import { IUsuario } from '../../../interfaces/iusuario.interface';
 import { Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { EditorNoticiaComponent } from "../../../components/editor-noticia/editor-noticia.component";
 import { EditorComponent } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-page-creacion',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, EditorNoticiaComponent, EditorComponent],
+  imports: [RouterLink, ReactiveFormsModule, EditorComponent],
   templateUrl: './page-creacion.component.html',
   styleUrl: './page-creacion.component.css'
 })

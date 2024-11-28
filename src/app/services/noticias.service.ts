@@ -30,8 +30,8 @@ export class NoticiasService {
     return firstValueFrom(this.httpClient.get<INoticia>(`${this.endpoint}/${id}`))
   }
 
-  getByUser(): Promise<INoticia[]> {
-    return firstValueFrom(this.httpClient.get<INoticia[]>(`${this.endpoint}/usuario/`))
+  getByUser(): Promise<Respuesta> {
+    return firstValueFrom(this.httpClient.get<Respuesta>(`${this.endpoint}/usuario/`))
   }
 
   getBySlug(slug: string): Promise<INoticia> {
@@ -59,7 +59,7 @@ export class NoticiasService {
     return firstValueFrom(this.httpClient.get<Respuesta>(`${this.endpoint}/busqueda/${texto}?num=${limit}`))
   }
 
-  getNoticiasPorBusqueda(url: string): Promise<Respuesta> {
+  getByUrl(url: string): Promise<Respuesta> {
 
     return firstValueFrom(this.httpClient.get<Respuesta>(`${url}`))
   }

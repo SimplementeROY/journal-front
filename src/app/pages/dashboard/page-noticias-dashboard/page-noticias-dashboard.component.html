@@ -1,9 +1,19 @@
-<div>
+<div class="flex edition-page">
     <button class="miBtn" [routerLink]="['/dashboard', 'crear-noticia']">Crear Noticia <i
             class="fa-solid fa-plus colortext"></i></button>
+    <div class="botones">
+        <button class="btn btn-dark" (click)="prevPage()" [disabled]="!prev" [class.disabled]="!prev">Prev</button>
+        <button class="btn btn-dark" (click)="nextPage()" [disabled]="!next" [class.disabled]="!next">Next</button>
+
+    </div>
+
     <section>
         @for (noticia of arrNoticiasSinPublicar; track noticia.id) {
         <app-noticia-edition-card [miNoticia]="noticia"></app-noticia-edition-card>
         }
     </section>
+    <div class="botones">
+        <button class="btn btn-dark" (click)="prevPage()" [disabled]="!prev">Prev</button>
+        <button class="btn btn-dark" (click)="nextPage()" [disabled]="!next">Next</button>
+    </div>
 </div>

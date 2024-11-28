@@ -43,37 +43,6 @@ img {
     height: 100%;
 }
 
-.family {
-    font-family: 'Newsreader', serif;
-}
-
-.familyEstado {
-    font-family: 'Bebas Neue', sans-serif;
-}
-
-.div-noticia {
-    border: 2px solid #ccc;
-    background-color: #f9f9f9;
-    margin: 15px;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1rem;
-}
-
-.noticiaTexto {
-    flex: 1;
-    margin-right: 80px;
-    background-color: #eeeeee;
-    padding: 15px;
-    border-radius: 10px;
-    width: 20rem;
-}
-
-
-
 .text-borrador,
 .text-revision,
 .text-publicado {
@@ -98,22 +67,6 @@ img {
     color: #23d74d;
 }
 
-.content-right {
-    display: flex;
-    flex-direction: column;
-    margin-right: 40px;
-}
-
-.content-left {
-    display: flex;
-    flex-direction: column;
-}
-
-.caja-derecha {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 /*--------*/
 /* CSS de botones */
@@ -177,37 +130,16 @@ img {
 
 @media (width <=46.875rem) {
 
-    .div-noticia {
-        flex-direction: column;
-    }
 
     article {
+        display: flex;
         flex-direction: column;
     }
 
-    img {
-        max-width: 100%;
-        margin-bottom: 15px;
+    figure {
+        max-height: none;
     }
 
-    .caja-derecha {
-        flex-direction: column;
-    }
-
-    .content-right,
-    .content-left {
-        margin-right: 0;
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    .noticiaTexto {
-        margin-right: 0;
-        width: auto;
-        font-size: 0.8rem;
-    }
 }
 
 @media (46.9375rem <=width <=62.5rem) {

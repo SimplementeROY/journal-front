@@ -54,7 +54,7 @@ export class PageBusquedaComponent {
   }
   async chargeData(url: string) {
     try {
-      let respuesta: any = await this.noticiasService.getNoticiasPorBusqueda(url);
+      let respuesta: any = await this.noticiasService.getByUrl(url);
       this.viewportScroller.scrollToPosition([0, 0]);
       this.arrNoticiasBuscadas = respuesta.resultado
       this.prev = respuesta.prev;

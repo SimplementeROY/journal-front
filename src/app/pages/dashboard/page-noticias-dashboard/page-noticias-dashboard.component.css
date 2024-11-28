@@ -32,7 +32,6 @@
     font-size: 16px;
     font-weight: 600;
     line-height: normal;
-    margin-bottom: 1rem;
     min-width: 0;
     outline: none;
     padding: 16px 24px;
@@ -44,6 +43,7 @@
     touch-action: manipulation;
     will-change: transform;
     height: 65px;
+
 }
 
 .miBtn:disabled {
@@ -72,7 +72,20 @@
 
 section {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     flex-direction: column;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+    margin: auto;
+}
+
+.edition-page {
+    flex-direction: column;
+    gap: 1.5rem;
     margin-bottom: 3rem;
+    align-items: flex-start;
 }

@@ -18,8 +18,36 @@ export class PageNoticiasDashboardComponent {
   arrNoticiasSinPublicar: INoticia[] = [];
   noticiasService = inject(NoticiasService)
   sanitizer = inject(DomSanitizer)
+  next: string = '';
+  prev: string = '';
   async ngOnInit() {
-    this.arrNoticiasSinPublicar = await this.noticiasService.getByUser()
+    try {
+      let respuesta: any = await this.noticiasService.getByUser();
+      this.arrNoticiasSinPublicar = respuesta.resultado
+      this.next = respuesta.next;
+      this.prev = respuesta.prev
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  nextPage() {
+    this.chargeData(this.next)
+  }
+
+  prevPage() {
+    this.chargeData(this.prev)
+  }
+
+  async chargeData(url: string) {
+    try {
+      let respuesta: any = await this.noticiasService.getByUrl(url);
+      this.arrNoticiasSinPublicar = respuesta.resultado
+      this.next = respuesta.next;
+      this.prev = respuesta.prev
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 }
