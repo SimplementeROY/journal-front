@@ -7,8 +7,8 @@ import { firstValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoriasService {
-  // private endpoint = 'https://upgrade-news.onrender.com/api/categorias/';
-  private endpoint = 'http://localhost:3000/api/categorias/';
+  private endpoint = 'https://journal-back.onrender.com/api/categorias/';
+  // private endpoint = 'http://localhost:3000/api/categorias/';
   private httpClient = inject(HttpClient)
 
   getAll(): Promise<ICategoria[]> {

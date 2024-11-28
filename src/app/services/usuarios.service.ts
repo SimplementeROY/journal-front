@@ -9,8 +9,8 @@ import { IUsuario } from '../interfaces/iusuario.interface';
 })
 
 export class UsuariosService {
-  // private endpoint = 'https://upgrade-news.onrender.com/api/usuarios/';
-  private endpoint = 'http://localhost:3000/api/usuarios/';
+  private endpoint = 'https://journal-back.onrender.com/api/usuarios/';
+  // private endpoint = 'http://localhost:3000/api/usuarios/';
 
   private httpClient = inject(HttpClient)
 
