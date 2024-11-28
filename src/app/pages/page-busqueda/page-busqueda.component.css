@@ -5,6 +5,9 @@
 
 .busqueda {
     margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 
     h2 {
         font-size: 3rem;
@@ -17,6 +20,12 @@
     margin: 0;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 @media (width <=46.875rem) {

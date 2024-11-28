@@ -6,8 +6,8 @@ import { firstValueFrom, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class suscriptoresService {
-  private endpoint = 'https://upgrade-news.onrender.com/api/suscriptores/';
-  // private endpoint = 'http://localhost:3000/api/suscriptores/';
+  // private endpoint = 'https://upgrade-news.onrender.com/api/suscriptores/';
+  private endpoint = 'http://localhost:3000/api/suscriptores/';
   private httpClient = inject(HttpClient)
 
   postCrearSuscriptor(nuevoSuscriptor: any) {

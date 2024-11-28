@@ -4,6 +4,7 @@ import { AsideComponent } from "../../components/aside/aside.component";
 import { NoticiasService } from '../../services/noticias.service';
 import { INoticia } from '../../interfaces/inoticia.interface';
 import { NoticiaCardComponent } from "../../components/noticia-card/noticia-card.component";
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-page-busqueda',
@@ -17,21 +18,51 @@ export class PageBusquedaComponent {
   activatedRoute = inject(ActivatedRoute)
   noticiasService = inject(NoticiasService)
   arrNoticiasBuscadas: INoticia[] = [];
-
+  prev: string = '';
+  next: string = '';
+  viewportScroller = inject(ViewportScroller)
   ngOnInit() {
 
     this.activatedRoute.queryParams.subscribe(async (params: any) => {
       this.query = params.q
       let parsedQuery: string = this.query.replace(' ', '&')
       try {
-        this.arrNoticiasBuscadas = await this.noticiasService.getByName(parsedQuery, 30)
+        let respuesta: any = await this.noticiasService.getByName(parsedQuery, 10)
 
+        this.arrNoticiasBuscadas = respuesta.resultado
+        this.prev = respuesta.prev;
+        this.next = respuesta.next;
       } catch (error) {
-        console.log(error);
         this.arrNoticiasBuscadas = []
       }
 
     })
+  }
+
+  async nextNews() {
+    if (!this.next) {
+      return
+    }
+    this.chargeData(this.next)
+  }
+
+  async prevNews() {
+    if (!this.prev) {
+      return
+    }
+    this.chargeData(this.prev)
+  }
+  async chargeData(url: string) {
+    try {
+      let respuesta: any = await this.noticiasService.getNoticiasPorBusqueda(url);
+      this.viewportScroller.scrollToPosition([0, 0]);
+      this.arrNoticiasBuscadas = respuesta.resultado
+      this.prev = respuesta.prev;
+      this.next = respuesta.next;
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 }
 

@@ -1,6 +1,10 @@
 <div class="contenedor grid">
     <div class="busqueda">
         <h2 class="mb-5 mt-3">Resultados de búsqueda:</h2>
+        <div class="buttons">
+            <button class="btn btn-dark" (click)="prevNews()" [disabled]="!prev">Prev</button>
+            <button class="btn btn-dark" (click)="nextNews()" [disabled]="!next">Next</button>
+        </div>
         <section class="grid lista-busquedas">
             @for (noticia of arrNoticiasBuscadas; track noticia.id) {
             <app-noticia-card [miNoticia]="noticia" [esNoticiaGeneral]="true"></app-noticia-card>
@@ -8,6 +12,10 @@
             <h3>No encontramos ni una noticia 😢</h3>
             }
         </section>
+        <div class="buttons">
+            <button class="btn btn-dark" (click)="prevNews()" [disabled]="!prev">Prev</button>
+            <button class="btn btn-dark" (click)="nextNews()" [disabled]="!next">Next</button>
+        </div>
     </div>
     <aside class="widgets">
         <app-aside></app-aside>
