@@ -33,7 +33,7 @@ span {
 figure {
     flex: auto;
     margin: 0;
-    max-height: 300px;
+    align-self: stretch;
 }
 
 img {
