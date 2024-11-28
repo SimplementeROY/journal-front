@@ -18,9 +18,9 @@ export class PageHomeComponent {
   activatedRoute = inject(ActivatedRoute)
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: any) => {
-      // console.log(params);
+      // (params);
       this.categoria = params.categoria
-      // console.log(this.categoria);
+      // (this.categoria);
 
     })
   }

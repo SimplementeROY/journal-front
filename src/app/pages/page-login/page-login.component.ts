@@ -27,10 +27,9 @@ export class PageLoginComponent {
 
   async getDataLogin() {
     try {
-      console.log(this.loginForm.value);
+      (this.loginForm.value);
 
       let response: any = await this.usersService.login(this.loginForm.value)
-      console.log(response);
       localStorage.setItem('token', response.token);
       Swal.fire({
         icon: 'success',
@@ -44,7 +43,7 @@ export class PageLoginComponent {
       this.router.navigate(['/dashboard'])
 
     } catch (error: any) {
-      console.log(error.error.message);
+      (error.error.message);
       Swal.fire({
         icon: 'error',
         title: 'Error en el inicio de sesión',

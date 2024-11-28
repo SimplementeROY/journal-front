@@ -93,19 +93,19 @@ export class PageCreacionComponent {
     // Para obtener las categorias
     this.categoriasService.getAll().then((data: ICategoria[]) => {
       this.arrCategorias = data;
-      console.log(this.arrCategorias);
+      (this.arrCategorias);
     });
 
     // Para obtener los editores
     this.usuariosService.getEditores().then((data: IUsuario[]) => {
       this.arrEditores = data;
-      console.log(this.arrEditores);
+      (this.arrEditores);
     });
 
     // Para obtener el id del usuario y bloquear acceso al cambio del estado
     this.usuariosService.getUsuarioPorId().then((data: IUsuario) => {
       this.usuarioId = data;
-      console.log(this.usuarioId);
+      (this.usuarioId);
       this.crearNoticiaForm.patchValue({
         redactor_id: this.usuarioId.id
       });
