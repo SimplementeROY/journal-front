@@ -57,7 +57,7 @@ export class FormularioSuscripcionComponent {
             icon: "warning",
             title: "¡Email duplicado!",
             text: "El email " + this.miFormulario.value.email + " ya existe en nuestra la base de datos de suscriptores.",
-            footer: '<p>Si perdiste el email de confirmación date de baja aquí</p><p><a href="https://journal-front-6kv2mc7h8-simplementeroys-projects.vercel.app/baja_suscriptor">Baja suscripción</a></p>'
+            footer: '<p>Si perdiste el email de confirmación date de baja aquí</p><p><a [routerLink]="["/baja_suscriptor"]">Baja suscripción</a></p>'
           });
 
           this.miFormulario.reset();
